@@ -1,18 +1,23 @@
+'use strict'
 
+// mongoose 
+const mongoose = require('mongoose');
 
+// Blog Category Schema
+const BlogCategorySchema = new mongoose.Schema({
 
+    // _id
 
+    name: {
+        type: String,
+        trim: true,
+        required: true
+    }
 
-
-
-
-
-
-
-
-
-
-
+}, {
+    collection: 'BlogCategories', // Table name
+    timestamps: true // creates -> createdAt & updatedAt
+})
 
 
 const BlogPostSchema = new mongoose.Schema({
@@ -58,6 +63,6 @@ const BlogPostSchema = new mongoose.Schema({
 
 
 module.exports = {
-
+  BlogCategory: mongoose.model('BlogCategory', BlogCategorySchema),
   BlogPost: mongoose.model('BlogPost', BlogPostSchema)
 }
